@@ -8,6 +8,8 @@ use model\DTO\Documento as Documento;
 require_once "../model/DAO/documentoDao.php";
 require_once "../model/DTO/documento.php";
 
+session_start();
+
 $documentoController = new DocumentoController($_POST ?? $_GET);
 
 class DocumentoController
@@ -16,6 +18,12 @@ class DocumentoController
     
     public function __construct($request)
     {
+        if (!(isset($_SESSION["login"]) && $_SESSION['login'] == true))
+        {
+            header("Location:../views/sesion.php");
+            die();    
+        }
+
         $this->documentoDao = new DocumentoDao();
 
         if (!isset($request['metodo']))

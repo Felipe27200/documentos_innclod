@@ -5,6 +5,8 @@ namespace controller;
 use model\DAO\TipoDao as TipoDao;
 use model\DTO\Tipo as Tipo;
 
+session_start();
+
 require_once "../model/DAO/tipoDao.php";
 require_once "../model/DTO/tipo.php";
 
@@ -15,6 +17,12 @@ class TipoController
     private $tipoDao;
     public function __construct($request)
     {
+        if (!(isset($_SESSION["login"]) && $_SESSION['login'] == true))
+        {
+            header("Location:../views/sesion.php");
+            die();    
+        }
+        
         $this->tipoDao = new TipoDao();
 
         if (!isset($request['metodo']))

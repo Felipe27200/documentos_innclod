@@ -50,7 +50,6 @@ class DocumentoDao
         } 
         catch (Exception $e) 
         {
-            // $response['mensaje'] = "Rectifique que el nombre del documento\n no esté registrado aún";
             $response['mensaje'] = $e->getMessage();
         }
 

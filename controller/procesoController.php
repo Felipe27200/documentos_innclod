@@ -8,6 +8,8 @@ use model\DTO\Proceso as Proceso;
 require_once "../model/DAO/procesoDao.php";
 require_once "../model/DTO/proceso.php";
 
+session_start();
+
 $procesoController = new ProcesoController($_POST ?? $_GET);
 
 class ProcesoController
@@ -15,7 +17,19 @@ class ProcesoController
     private $procesoDao;
     public function __construct($request)
     {
+        if (!(isset($_SESSION["login"]) && $_SESSION['login'] == true))
+        {
+            header("Location:../views/sesion.php");
+            die();    
+        }
+        
         $this->procesoDao = new ProcesoDao();
+
+        if (!(isset($_SESSION['login']) && $_SESSION['login']))
+        {
+            header("Location: /views/sesion.php");
+            die();
+        }
 
         if (!isset($request['metodo']))
             $request = $_GET;

@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+if (isset($_SESSION["login"])) :
+?>
 <?php require_once "../layout/header-view.php"; ?>
 
     <div class="row justify-content-center">
@@ -51,5 +56,10 @@
             </div>
         </div>
     </div>
+    <?php require_once "../layout/footer-view.php"; ?>
+<?php 
+else: 
+    header("Location: ../sesion.php")
+?>
+<?php endif; ?>
 
-<?php require_once "../layout/footer-view.php"; ?>

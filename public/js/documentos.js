@@ -27,6 +27,22 @@ let selectProceso = function (response) {
 $(document).ready(function () {
     let editar = false;
 
+    $(document).off("click", "#cerrarSesion");
+    $(document).on("click", "#cerrarSesion", function(){
+        $.ajax({
+            type: "POST",
+            url: "../../controller/sesionController.php",
+            data: {
+                metodo: "logout"
+            },
+        }).done(function () {
+            let url = window.location.origin + "/registro_docs/views/sesion.php";
+
+            window.location.assign(url);
+
+        });
+    });
+
     obtenerTipos(selectTipo);
     obtenerProcesos(selectProceso);
 

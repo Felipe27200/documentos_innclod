@@ -37,8 +37,6 @@ class Documento
     public function setDoc_id($doc_id)
     {
         $this->doc_id = $doc_id;
-
-        return $this;
     }
 
     /**
@@ -57,8 +55,6 @@ class Documento
     public function setDoc_nombre($doc_nombre)
     {
         $this->doc_nombre = $doc_nombre;
-
-        return $this;
     }
 
     /**
@@ -69,16 +65,19 @@ class Documento
         return $this->doc_codigo;
     }
 
+    public function setDoc_codigo($doc_codigo)
+    {
+        $this->doc_codigo = $doc_codigo;
+    }
+
     /**
      * Set the value of doc_codigo
      *
      * @return  self
      */ 
-    public function setDoc_codigo($doc_codigo)
+    public function createDoc_codigo($tip_prefijo, $pro_fijo, $numeracion)
     {
-        $this->doc_codigo = $doc_codigo;
-
-        return $this;
+        $this->doc_codigo = $tip_prefijo."-".$pro_fijo."-".$numeracion;
     }
 
     /**
@@ -97,8 +96,6 @@ class Documento
     public function setDoc_contenido($doc_contenido)
     {
         $this->doc_contenido = $doc_contenido;
-
-        return $this;
     }
 
     /**
@@ -117,8 +114,6 @@ class Documento
     public function setDoc_id_tipo($doc_id_tipo)
     {
         $this->doc_id_tipo = $doc_id_tipo;
-
-        return $this;
     }
 
     /**
@@ -137,8 +132,6 @@ class Documento
     public function setDoc_id_proceso($doc_id_proceso)
     {
         $this->doc_id_proceso = $doc_id_proceso;
-
-        return $this;
     }
 }
 

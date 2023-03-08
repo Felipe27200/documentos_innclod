@@ -1,8 +1,13 @@
-const procesoController = "../../controller/ProcesoController.php";
+const procesoController = "../../controller/procesoController.php";
 let tabla = null;
 
 $(document).ready(function () {
     let editar = false;
+
+    $("#agregarProceso #pro_prefijo").off("keyup");
+    $("#agregarProceso #pro_prefijo").on("keyup", function () {
+        $(this).val($(this).val().toUpperCase());
+    });
 
     $("#agregarProceso .cancelProceso").hide();
 
@@ -65,7 +70,6 @@ $(document).ready(function () {
             }
         }).done(function (response) {
             let proceso = JSON.parse(response);
-            console.dir(proceso);
 
             if (proceso.response == "unsuccessful")
             {
@@ -91,7 +95,6 @@ $(document).ready(function () {
         if (confirm(`¿Desea eliminar el proceso <<< ${element.find("td")[1].innerHTML} >>>?`))
         {
             let id = element.attr("procesoId");
-            console.dir(id)
 
             $.ajax({
                 type: "POST",
@@ -152,4 +155,23 @@ function listarProcesos() {
 
         tabla = $('#listaProcesos').DataTable();
     });
+}
+
+function obtenerProcesos(callback)
+{
+    let respuesta = null;
+
+    $.ajax({
+        type: "GET",
+        url: procesoController,
+        data: {
+            metodo: "obtenerProcesos"
+        }
+    }).done(function (response) {
+        respuesta = JSON.parse(response);
+
+        callback(respuesta);
+    });
+
+    return respuesta;
 }

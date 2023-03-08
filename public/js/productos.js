@@ -103,7 +103,7 @@ $(document).ready(function () {
             $("#agregarProducto #peso").val(producto[0].peso);
             $("#agregarProducto #stock").val(producto[0].stock);
             $("#agregarProducto #fecha_creacion").val(producto[0].fecha_creacion);
-            
+
             $("#agregarProducto .cancelProducto").show();
 
             editar = true;

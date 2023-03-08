@@ -5,6 +5,12 @@ $(document).ready(function () {
 
     $("#agregarTipo .cancelTipo").hide();
 
+    $("#agregarProceso #tip_prefijo").off("keyup");
+    $("#agregarTipo #tip_prefijo").on("keyup", function () {
+        $(this).val($(this).val().toUpperCase());
+    });
+
+
     if ($("#listaTipos").length > 0)
         listarTipos();
 
@@ -64,7 +70,6 @@ $(document).ready(function () {
             }
         }).done(function (response) {
             let tipo = JSON.parse(response);
-            console.dir(tipo);
 
             if (tipo.response == "unsuccessful")
             {
@@ -90,7 +95,6 @@ $(document).ready(function () {
         if (confirm(`¿Desea eliminar el tipo <<< ${element.find("td")[1].innerHTML} >>>?`))
         {
             let id = element.attr("tipoId");
-            console.dir(id)
 
             $.ajax({
                 type: "POST",
@@ -152,4 +156,23 @@ function listarTipos() {
         // tabla = $('#listaTipos').DataTable();
         $('#listaTipos').DataTable();
     });
+}
+
+function obtenerTipos(callback)
+{
+    let respuesta = null;
+
+    $.ajax({
+        type: "GET",
+        url: tipoController,
+        data: {
+            metodo: "obtenerTipos"
+        }
+    }).done(function (response) {
+        respuesta = JSON.parse(response);
+
+        callback(respuesta);
+    });
+
+    return respuesta;
 }

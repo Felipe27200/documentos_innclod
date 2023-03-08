@@ -2,49 +2,69 @@
 
     <div class="row justify-content-center">
         <div class="col-auto">
-            <h2 class="mt-2">Tipos</h2>
+            <h2 class="mt-2">Documentos</h2>
         </div>
     </div>
 
-    <div class="row d-flex">
-        <div class="col-md-6">
-            <form id="agregarTipo">
+    <div class="row d-flex mx-1">
+        <div class="col-md-4">
+            <form id="agregarDocumento">
                 <div class="mb-3">
-                    <label for="" class="form-label">Nombre Tipo: </label>
-                    <input type="text" id="tip_nombre" required class="form-control"/>
+                    <label for="" class="form-label">Nombre Documento: </label>
+                    <input type="text" id="doc_nombre" required class="form-control"/>
                 </div>
 
                 <div class="mb-3">
-                    <label for="" class="form-label">Prefijo Tipo: </label>
-                    <input type="text" id="tip_prefijo" required class="form-control"/>
+                    <label for="" class="form-label">Tipo Documento: </label>
+
+                    <select type="text" id="doc_id_tipo" required class="form-select">
+
+                    </select> 
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Proceso Documento: </label>
+
+                    <select type="text" id="doc_id_proceso" required class="form-select">
+
+                    </select> 
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Contenido Documento: </label>
+
+                    <textarea class="form-control" id="doc_contenido"></textarea>
                 </div>
 
                 <div class="d-grid gap-2">
                     
-                    <input type="submit" value="Registrar Tipo" class="btn btn-primary" id="btn-eliminar">
+                    <input type="submit" value="Registrar Documento" class="btn btn-primary" id="btn-eliminar">
 
-                    <button class="btn btn-secondary cancelTipo" type="button">
+                    <button class="btn btn-secondary cancelDocumento" type="button">
                         Cancelar Edición
                     </button>
                     
-                    <input type="hidden" value="registrarTipo" id="metodo">
-                    <input type="hidden" id="tipoId">
+                    <input type="hidden" value="registrarDocumento" id="metodo">
+                    <input type="hidden" id="documentoId">
                 </div>                    
             </form> 
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="table-responsive">
-                <table class="table table-bordered" id="listaTipos">
+                <table class="table table-bordered" id="listaDocumentos">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Prefijo</th>
+                            <th>Código</th>
+                            <th>Tipo</th>
+                            <th>Proceso</th>
+                            <th>Contenido</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="tipos">
+                    <tbody id="documentos">
 
                     </tbody>
                 </table>

@@ -10,5 +10,6 @@
 
     <script src="../../public/js/procesos.js"></script>
     <script src="../../public/js/tipo.js"></script>
+    <script src="../../public/js/documentos.js"></script>
 </body>
 </html>

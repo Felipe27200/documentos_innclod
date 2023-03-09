@@ -38,7 +38,7 @@ Dentro del aplicativo exiten anchor elements para redireccionar a cada una de el
 */
 
 -- CREAR LA BASE DE DATOS
--- CREATE DATABASE registro_docs_2;
+CREATE DATABASE registro_docs;
 USE registro_docs;
 
 -- TABLA PRO_PROCESO

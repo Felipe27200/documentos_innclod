@@ -127,6 +127,8 @@ function listarProcesos() {
     }).done(function (response) {
         response = JSON.parse(response);
 
+        $('#listaProcesos').DataTable().destroy();
+
         if (response.response != "successful")
         {
             alert("No se consiguieron datos");
@@ -153,7 +155,7 @@ function listarProcesos() {
 
         $("#procesos").html(template);
 
-        tabla = $('#listaProcesos').DataTable();
+        tabla = $('#listaProcesos').DataTable().draw();
     });
 }
 

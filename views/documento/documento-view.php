@@ -37,7 +37,7 @@ if (isset($_SESSION["login"]) && $_SESSION['login'] == true) :
                 <div class="mb-3">
                     <label for="" class="form-label">Contenido Documento: </label>
 
-                    <textarea class="form-control" id="doc_contenido"></textarea>
+                    <textarea class="form-control" id="doc_contenido" rows="3"></textarea>
                 </div>
 
                 <div class="d-grid gap-2">

@@ -169,6 +169,8 @@ function listarDocumentos() {
     }).done(function (response) {
         response = JSON.parse(response);
 
+        $('#listaDocumentos').DataTable().destroy();
+
         if (response.response != "successful")
         {
             alert("No se consiguieron datos");
@@ -198,8 +200,7 @@ function listarDocumentos() {
 
         $("#documentos").html(template);
 
-        // tabla = $('#listaDocumentos').DataTable();
-        $('#listaDocumentos').DataTable();
+        $('#listaDocumentos').DataTable().draw();
     });
 }
 

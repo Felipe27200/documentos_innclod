@@ -127,6 +127,8 @@ function listarTipos() {
     }).done(function (response) {
         response = JSON.parse(response);
 
+        $('#listaTipos').DataTable().destroy();
+
         if (response.response != "successful")
         {
             alert("No se consiguieron datos");
@@ -153,8 +155,7 @@ function listarTipos() {
 
         $("#tipos").html(template);
 
-        // tabla = $('#listaTipos').DataTable();
-        $('#listaTipos').DataTable();
+        $('#listaTipos').DataTable().draw();
     });
 }
 
